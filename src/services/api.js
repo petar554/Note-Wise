@@ -15,19 +15,26 @@ export const login = async (username, password, language_id) => {
   }
 };
 
+export const createNote = async (token) => {
+  try {
+    const response = await axios.post(`${API_URL}/notes`, {}, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    });
+    return response.data; 
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const getUserNotes = async (token) => {
     const response = await api.get('/users/me/notes', {
       headers: { Authorization: `Bearer ${token}` }
     });
     return response.data.notes;
   };
-
-export const createNote = async (token) => {
-    const response = await api.post('/notes', {}, {
-        headers: { Authorization: `Bearer ${token}` }
-    });
-    return response.data;
-};
 
 export const addImageToNote = async (noteId, image, token) => {
     const formData = new FormData();

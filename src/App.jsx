@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import SignIn from './components/SignIn';
+import NewNotes from './components/NewNotes';
 import './App.css';
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  const handleLoginSuccess = () => {
+  const [localization, setLocalization] = useState(null); 
+  const handleLoginSuccess = (localizationData) => {
     setIsAuthenticated(true);
+    setLocalization(localizationData);
   };
 
   return (
@@ -14,7 +16,7 @@ const App = () => {
       {!isAuthenticated ? (
         <SignIn onLoginSuccess={handleLoginSuccess} />
       ) : (
-        <div>Welcome to the NoteWise App!</div>
+        <NewNotes localization={localization} />
       )}
     </div>
   );

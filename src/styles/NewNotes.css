@@ -1,0 +1,48 @@
+.new-notes-screen {
+    text-align: center;
+}
+  
+.new-note-headline {
+    margin-top: 56px; 
+}
+
+.new-note-below-headline {
+    margin-top: 8px;
+}
+
+.new-note-image-container {
+    margin: 40px 0;
+}
+
+.new-note-image-container img {
+    width: 300px;
+    height: 300px;
+    margin-right: 10px;
+    filter: invert(1); /* makes the icon white */
+}
+
+.new-note-below-image {
+    margin-bottom: 32px;
+}
+
+.start-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.start-button-container .sign-in-button {
+    width: 120px;
+    height: 45px;
+    border-radius: 25px;
+    border: 0.5px solid rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    background-color: rgb(141, 141, 141);
+    font-weight: bold;
+    box-shadow: none;
+}
+
+.menu-icon {
+    width: 24px;
+    height: 24px;
+}

@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
-import { Button, TextField, Typography, Box, Link, Select, MenuItem } from '@mui/material';
-import { useTranslation } from 'react-i18next';
+import { Button, TextField, Typography, Box, Link } from '@mui/material';
 import { login } from '../services/api';
 import HighFiveIcon from '../assets/noun-high-five-1154833.svg';
 import '../styles/common.css';
 import '../styles/SignIn.css';
 
 const SignIn = ({ onLoginSuccess }) => {
-  const { t, i18n } = useTranslation();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [language, setLanguage] = useState('en');
-  const [error, setError] = useState('');
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -19,24 +16,23 @@ const SignIn = ({ onLoginSuccess }) => {
       const response = await login(username, password, language);
       const { token, localization } = response;
       localStorage.setItem('token', token);
-      i18n.changeLanguage(language);
       onLoginSuccess(localization);
     } catch (error) {
-      setError(t('invalidCredentials'));
+      console.error('Login failed:', error);
     }
   };
 
   return (
-    <Box className="dark-mode-container login-screen" p={4}>
+    <Box className="dark-mode-container main-screen" p={4}>
       <Box className="app-logo" mb={14}>
         <img src={HighFiveIcon} alt="App Icon" />
         <Typography variant="h4" component="h1" fontWeight="bold">
-          {t('appName')}
+          {'appName'}
         </Typography>
       </Box>
 
       <Box component="form" onSubmit={handleLogin} className="sign-in-form">
-        <label className="label" htmlFor="username">{t('Username')}</label>
+        <label className="label" htmlFor="username">{'Username'}</label>
         <TextField
           id="username"
           type="text"
@@ -50,7 +46,7 @@ const SignIn = ({ onLoginSuccess }) => {
           onChange={(e) => setUsername(e.target.value)}
         />
 
-        <label className="label" htmlFor="password">{t('Password')}</label>
+        <label className="label" htmlFor="password">{'Password'}</label>
         <TextField
           id="password"
           type="password"
@@ -72,13 +68,13 @@ const SignIn = ({ onLoginSuccess }) => {
 
         <Box className="forgot-password-container">
           <Link href="#" underline="hover" className="forgot-password-link">
-            {t('forgot password?')}
+            {'forgot password?'}
           </Link>
         </Box>
 
         <Box className="sign-in-button-container">
           <Button type="submit" variant="contained" className="sign-in-button">
-            {t('Sign in')}
+            {'Sign in'}
           </Button>
         </Box>
       </Box>
