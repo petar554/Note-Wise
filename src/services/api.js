@@ -1,26 +1,18 @@
 import axios from 'axios';
+
 const API_URL = import.meta.env.VITE_API_URL;
 
-const api = axios.create({
-  baseURL: `${API_URL}`, 
-  headers: { 'Content-Type': 'application/json' }
-});
-
-api.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token');
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+export const login = async (username, password, language_id) => {
+  try {
+    const response = await axios.post(`${API_URL}/auth/login`, {
+      username,
+      password,
+      language_id,
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
   }
-  return config;
-});
-
-export const login = async (username, password) => {
-  const response = await api.post(`${API_URL}/auth/login`, { username, password })
-  const { token } = response.data;
-
-  localStorage.setItem('jwtToken', token);
-
-  return token;
 };
 
 export const getUserNotes = async (token) => {

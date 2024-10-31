@@ -1,0 +1,30 @@
+{
+  "en": {
+    "sign_in_app_name": "Application",
+    "sign_in_username": "Username",
+    "sign_in_password": "Password",
+    "sign_in_forgot_password": "Forgot password?",
+    "new_note_headline": "Let's create a new note 2",
+    "new_note_below_headline": "(it just takes a few seconds)",
+    "new_note_below_image": "Simply take pictures of your notes",
+    "new_note_start_button": "Start",
+    "menu_notes": "Notes",
+    "menu_setup": "Setup",
+    "menu_account": "Account",
+    "menu_logout": "Logout"
+  },
+  "es": {
+    "sign_in_app_name": "Aplicación",
+    "sign_in_username": "Nombre de usuario",
+    "sign_in_password": "Contraseña",
+    "sign_in_forgot_password": "¿Olvidaste tu contraseña?",
+    "new_note_headline": "Vamos a crear una nueva nota",
+    "new_note_below_headline": "(esto solo toma unos segundos)",
+    "new_note_below_image": "Simplemente toma fotos de tus notas",
+    "new_note_start_button": "Comenzar",
+    "menu_notes": "Notas",
+    "menu_setup": "Configuración",
+    "menu_account": "Cuenta",
+    "menu_logout": "Cerrar sesión"
+  }
+}
