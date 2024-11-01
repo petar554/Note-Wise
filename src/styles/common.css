@@ -18,6 +18,7 @@ body {
   max-width: 400px;
   border: none;
   background-color: transparent;
+  position: relative;
 }
 
 .sign-in-button-container {

@@ -29,19 +29,12 @@ export const createNote = async (token) => {
   }
 };
 
-export const getUserNotes = async (token) => {
-    const response = await api.get('/users/me/notes', {
-      headers: { Authorization: `Bearer ${token}` }
-    });
-    return response.data.notes;
-  };
-
 export const addImageToNote = async (noteId, image, token) => {
-    const formData = new FormData();
-    formData.append('image', image);
-  
-    const response = await api.post(`/notes/${noteId}/images`, formData, {
-      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data' }
-    });
-    return response.data;
+  const formData = new FormData();
+  formData.append('image', image);
+
+  const response = await axios.post(`${API_URL}/notes/${noteId}/images`, formData, {
+    headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data' }
+  });
+  return response.data;
 };

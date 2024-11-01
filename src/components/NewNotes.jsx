@@ -5,14 +5,15 @@ import nounMenuIcon from '../assets/noun-menu-2528077.svg';
 import { createNote } from '../services/api';
 import '../styles/NewNotes.css';
 
-const NewNotes = ({ localization, onNoteCreation }) => {
+const NewNotes = ({ localization, onNoteCreation, onStartCapture }) => {
   const token = localStorage.getItem('token');
 
   const handleStart = async () => {
     try {
       const response = await createNote(token);
       const { notes_id } = response;
-      onNoteCreation(notes_id); 
+      onNoteCreation(notes_id);
+      onStartCapture(notes_id);
     } catch (error) {
       console.error('Error creating note:', error);
     }
@@ -36,11 +37,10 @@ const NewNotes = ({ localization, onNoteCreation }) => {
         <Button onClick={handleStart} variant="contained" className="sign-in-button">
           {localization?.new_note_start_button || "Start"}
         </Button>
-        <img src={nounMenuIcon} alt="Menu Icon" className="menu-icon" />
       </Box>
+      <img src={nounMenuIcon} alt="Menu Icon" className="menu-icon"/>
     </Box>
   );
 };
 
 export default NewNotes;
-

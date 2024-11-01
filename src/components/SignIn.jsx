@@ -59,13 +59,7 @@ const SignIn = ({ onLoginSuccess }) => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-
-        {error && (
-          <Typography color="error" variant="body2" sx={{ mb: 2 }}>
-            {error}
-          </Typography>
-        )}
-
+        
         <Box className="forgot-password-container">
           <Link href="#" underline="hover" className="forgot-password-link">
             {'forgot password?'}
