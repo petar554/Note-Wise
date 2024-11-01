@@ -1,6 +1,7 @@
 import React, { useState, useEffect  } from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import nounMenuIcon from '../assets/noun-menu-2528077.svg';
+import cameraIcon from '../assets/camera.svg';
 import '../styles/CaptureImages.css';
 import { addImageToNote } from '../services/api';
 
@@ -53,10 +54,9 @@ const CaptureImages = ({ notesId, onBack }) => {
       </Typography>
       <div id="camera-container">
         <video id="video" autoPlay playsInline></video>
-        <Button id="snap" onClick={captureImage}>
-          Snap
-        </Button>
       </div>
+      <Button id="snap" onClick={captureImage} startIcon={<img src={cameraIcon} alt="Camera icon" className="camera-icon"/>}>
+        </Button>
       <div id='snapshots'></div>
       <div className="thumbnail-container">
         <div className="thumbnail">
