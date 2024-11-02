@@ -31,16 +31,6 @@ const App = () => {
       )}
     </div>
   );
-
-  // return (
-  //   <div className="app">
-  //     {!isAuthenticated ? (
-  //       <SignIn onLoginSuccess={handleLoginSuccess} />
-  //     ) : (
-  //       <NewNotes localization={localization} />
-  //     )}
-  //   </div>
-  // );
 };
 
 export default App;

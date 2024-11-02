@@ -4,10 +4,12 @@ import nounMenuIcon from '../assets/noun-menu-2528077.svg';
 import cameraIcon from '../assets/camera.svg';
 import '../styles/CaptureImages.css';
 import { addImageToNote } from '../services/api';
+import Menu from './Menu';
 
 const CaptureImages = ({ notesId, onBack }) => {
   const [imageThumbnails, setImageThumbnails] = useState([]);
   const [imageCount, setImageCount] = useState(0);
+  const [showMenu, setShowMenu] = useState(false);
 
   const initCamera = async () => {
     try {
@@ -69,7 +71,13 @@ const CaptureImages = ({ notesId, onBack }) => {
         {imageCount > 0 && <span className="image-count">{imageCount}</span>}
         </div>
       </div>
-      <img src={nounMenuIcon} alt="Menu Icon" className="menu-icon" />
+      <img
+        src={nounMenuIcon}
+        alt="Menu Icon"
+        className="menu-icon"
+        onClick={() => setShowMenu(true)} 
+      />
+      {showMenu && <Menu onClose={() => setShowMenu(false)} />}
     </Box>
   );
 };

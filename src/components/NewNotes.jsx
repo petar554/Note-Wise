@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Typography, Box } from '@mui/material';
 import nounTappingIcon from '../assets/noun-hand-using-phone-4230396.svg';
 import nounMenuIcon from '../assets/noun-menu-2528077.svg';
 import { createNote } from '../services/api';
 import '../styles/NewNotes.css';
+import Menu from './Menu'; 
 
 const NewNotes = ({ localization, onNoteCreation, onStartCapture }) => {
   const token = localStorage.getItem('token');
+  const [showMenu, setShowMenu] = useState(false);
 
   const handleStart = async () => {
     try {
@@ -38,7 +40,13 @@ const NewNotes = ({ localization, onNoteCreation, onStartCapture }) => {
           {localization?.new_note_start_button || "Start"}
         </Button>
       </Box>
-      <img src={nounMenuIcon} alt="Menu Icon" className="menu-icon"/>
+      <img
+        src={nounMenuIcon}
+        alt="Menu Icon"
+        className="menu-icon"
+        onClick={() => setShowMenu(true)} // Show menu on click
+      />
+      {showMenu && <Menu onClose={() => setShowMenu(false)} />}
     </Box>
   );
 };
