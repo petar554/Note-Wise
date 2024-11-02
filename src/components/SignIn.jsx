@@ -23,7 +23,7 @@ const SignIn = ({ onLoginSuccess }) => {
   };
 
   return (
-    <Box className="dark-mode-container main-screen" p={4}>
+    <Box className="dark-mode-container main-screen" p={2}>
       <Box className="app-logo" mb={14}>
         <img src={HighFiveIcon} alt="App Icon" />
         <Typography variant="h4" component="h1" fontWeight="bold">
@@ -59,7 +59,7 @@ const SignIn = ({ onLoginSuccess }) => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        
+
         <Box className="forgot-password-container">
           <Link href="#" underline="hover" className="forgot-password-link">
             {'forgot password?'}

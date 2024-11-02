@@ -50,7 +50,7 @@ const CaptureImages = ({ notesId, onBack }) => {
   };
 
   return (
-    <Box className="capture-images-screen main-screen" p={4}>
+    <Box className="dark-mode-container main-screen" p={4}>
       <Typography variant="h5" component="h1" fontWeight="bold">
         Capture Images of Your Notes
       </Typography>
@@ -74,7 +74,7 @@ const CaptureImages = ({ notesId, onBack }) => {
       <img
         src={nounMenuIcon}
         alt="Menu Icon"
-        className="menu-icon"
+        className="menu-icon2"
         onClick={() => setShowMenu(true)} 
       />
       {showMenu && <Menu onClose={() => setShowMenu(false)} />}

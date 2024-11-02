@@ -22,7 +22,7 @@ const NewNotes = ({ localization, onNoteCreation, onStartCapture }) => {
   };
 
   return (
-    <Box className="dark-mode-container main-screen" p={4}>
+    <Box className="dark-mode-container main-screen" p={1}>
       <Typography variant="h4" component="h1" fontWeight="bold" className="new-note-headline">
         {localization?.new_note_headline || "Let's create a new note"}
       </Typography>
@@ -44,7 +44,7 @@ const NewNotes = ({ localization, onNoteCreation, onStartCapture }) => {
         src={nounMenuIcon}
         alt="Menu Icon"
         className="menu-icon"
-        onClick={() => setShowMenu(true)} // Show menu on click
+        onClick={() => setShowMenu(true)} 
       />
       {showMenu && <Menu onClose={() => setShowMenu(false)} />}
     </Box>
