@@ -51,14 +51,11 @@ const CaptureImages = ({ notesId, onBack }) => {
 
   return (
     <Box className="dark-mode-container main-screen" p={4}>
-      <Typography variant="h5" component="h1" fontWeight="bold">
-        Capture Images of Your Notes
-      </Typography>
       <div id="camera-container">
         <video id="video" autoPlay playsInline></video>
       </div>
       <Button id="snap" onClick={captureImage} startIcon={<img src={cameraIcon} alt="Camera icon" className="camera-icon"/>}>
-        </Button>
+      </Button>
       <div id='snapshots'></div>
       <div className="thumbnail-container">
         <div className="thumbnail">

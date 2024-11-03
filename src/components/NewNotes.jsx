@@ -22,9 +22,12 @@ const NewNotes = ({ localization, onNoteCreation, onStartCapture }) => {
   };
 
   return (
-    <Box className="dark-mode-container main-screen" p={1}>
-      <Typography variant="h4" component="h1" fontWeight="bold" className="new-note-headline">
-        {localization?.new_note_headline || "Let's create a new note"}
+    <Box className="dark-mode-container main-screen" p={2}>
+     <Typography variant="h4" component="h1" fontWeight="bold" className="new-note-headline">
+        {localization?.new_note_headline?.split(' ').slice(0, 2).join(' ') || "Let's create"}
+      </Typography>
+      <Typography variant="h4" component="h1" fontWeight="bold" className="new-note-subheadline">
+        {localization?.new_note_headline?.split(' ').slice(2).join(' ') || "a new note"}
       </Typography>
       <Typography variant="body2" className="new-note-below-headline">
         {localization?.new_note_below_headline || "(it just takes a few seconds)"}

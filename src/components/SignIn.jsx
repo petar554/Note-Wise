@@ -24,14 +24,14 @@ const SignIn = ({ onLoginSuccess }) => {
 
   return (
     <Box className="dark-mode-container main-screen" p={2}>
-      <Box className="app-logo" mb={14}>
+      <Box className="app-logo">
         <img src={HighFiveIcon} alt="App Icon" />
         <Typography variant="h4" component="h1" fontWeight="bold">
           {'appName'}
         </Typography>
       </Box>
 
-      <Box component="form" onSubmit={handleLogin} className="sign-in-form">
+      <Box component="form" onSubmit={handleLogin} className="sign-in-form" mt={15}>
         <label className="label" htmlFor="username">{'Username'}</label>
         <TextField
           id="username"
