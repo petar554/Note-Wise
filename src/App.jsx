@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import SignIn from './components/SignIn';
 import NewNotes from './components/NewNotes';
 import CaptureImages from './components/CaptureImages';
-import './App.css';
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
