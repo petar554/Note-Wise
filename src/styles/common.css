@@ -1,6 +1,6 @@
 body {
-  background-color: #121212;
-  color: #ffffff;
+  background-color: #E6E6E6;
+  color: #000000;
   font-family: Arial, sans-serif;
 }
 
@@ -31,9 +31,9 @@ body {
   width: 120px;
   height: 45px;
   border-radius: 25px;
-  border: 0.5px solid rgb(255, 255, 255);
+  border: 0.5px solid rgb(0, 0, 0);
   color: rgb(0, 0, 0);
-  background-color: rgb(141, 141, 141);
+  background-color: #dddddd;
   font-weight: bold;
   box-shadow: none;
 }

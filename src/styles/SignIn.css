@@ -9,7 +9,6 @@
   width: 40px;
   height: 40px;
   margin-right: 10px;
-  filter: invert(1); /* makes the icon white */
 }
 
 .label {
@@ -24,5 +23,5 @@
 }
   
 .forgot-password-link {
-  color: #ffffff !important; 
+  color: #000000 !important; 
 }

@@ -6,7 +6,6 @@
     width: 300px;
     height: 250px;
     margin-right: 10px;
-    filter: invert(1); /* makes the icon white */
 }
 
 .new-note-below-image {
@@ -25,9 +24,9 @@
     width: 120px;
     height: 45px;
     border-radius: 25px;
-    border: 0.5px solid rgb(255, 255, 255);
+    border: 0.5px solid rgb(0, 0, 0);
     color: rgb(0, 0, 0);
-    background-color: rgb(141, 141, 141);
+    background-color: #dddddd;
     font-weight: bold;
     box-shadow: none;
 }
@@ -39,5 +38,4 @@
     bottom: 20px;
     right: 30px;
     cursor: pointer;
-    filter: brightness(0) invert(1); 
   }
