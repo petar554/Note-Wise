@@ -40,7 +40,7 @@ const SignIn = ({ onLoginSuccess }) => {
           variant="outlined"
           InputProps={{ 
             className: 'input-field',
-            sx: { backgroundColor: '#ffffff', color: '#000000'
+            sx: { backgroundColor: '#E6E6E6', color: '#000000'
           }}}
           value={username}
           onChange={(e) => setUsername(e.target.value)}
@@ -54,7 +54,7 @@ const SignIn = ({ onLoginSuccess }) => {
           variant="outlined"
           InputProps={{ 
             className: 'input-field',
-            sx: { backgroundColor: '#ffffff', color: '#000000'
+            sx: { backgroundColor: '#E6E6E6', color: '#000000'
           }}}          
           value={password}
           onChange={(e) => setPassword(e.target.value)}
