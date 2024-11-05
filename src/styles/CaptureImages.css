@@ -1,13 +1,15 @@
 #camera-container {
-    position: relative;
-    width: 100%;
-    max-width: 360px;
-    height: 400px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 90px); /* adjust height to leave room for the button and menu at the bottom */
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    flex-direction: column; 
+    background-color: #000;
+    z-index: 5; /* ensure it appears behind the camera button and menu */
 }
 
 #video {
@@ -17,59 +19,80 @@
 }
 
 #snap {
-    margin-top: 10px;
     background-color: #000; 
     border: none;
     border-radius: 50%; 
     cursor: pointer;
-    position: absolute;
+    position: fixed;
     left: 50%;
-    bottom: -40px;
+    bottom: 15px;
     transform: translateX(-50%);
-    width: 50px;
-    height: 55px;
+    width: 60px;
+    height: 60px;
     display: flex; 
     justify-content: center;
     align-items: center;
+    z-index: 10; 
 }
 
 .camera-icon {
-    filter: none;
-    padding-left: 13px;
     width: 55px;
-    height: 55px; 
+    height: 55px;
+    padding-left: 12px;
     fill: #fff;
 }
 
 .thumbnail-container {
-    position: absolute;
-    bottom: -50px;
-    left: 50px;
+    position: fixed;
+    bottom: 90px; 
+    left: 10px;
+    bottom: 10px;
     display: flex;
     align-items: center;
+    z-index: 10;
 }
 
 .thumbnail img {
     width: 50px;
     height: 50px;
     object-fit: cover;
+    border-radius: 5px;
 }
 
 .image-count {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: -5px;
+    right: -5px;
     background-color: #000;
     color: #fff;
     padding: 2px 5px;
     border-radius: 50%;
+    font-size: 12px;
 }
 
 .menu-icon2 {
-    position: absolute;
-    bottom: -20px;
-    right: 25px; 
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
     width: 40px;
     height: 40px;
     cursor: pointer;
-} 
+    z-index: 10;
+}
+
+@media (max-width: 600px) {
+    #snap {
+        width: 60px;
+        height: 60px;
+    }
+
+    .camera-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .menu-icon2 {
+        width: 45px;
+        height: 45px;
+    }
+}
