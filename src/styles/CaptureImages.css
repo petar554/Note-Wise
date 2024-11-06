@@ -3,13 +3,13 @@
     top: 0;
     left: 0;
     width: 100vw;
-    height: calc(100vh - 90px); /* adjust height to leave room for the button and menu at the bottom */
+    height: calc(100vh - 190px); /* adjust height to leave room for the button and menu at the bottom */
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
     background-color: #000;
-    z-index: 5; /* ensure it appears behind the camera button and menu */
+    z-index: 5; 
 }
 
 #video {

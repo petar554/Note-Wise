@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Typography, Button } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import nounMenuIcon from '../assets/noun-menu-2528077.svg';
 import cameraIcon from '../assets/camera.svg';
 import '../styles/CaptureImages.css';
 import { addImageToNote } from '../services/api';
 import Menu from './Menu';
 
-const CaptureImages = ({ notesId, onBack }) => {
+const CaptureImages = ({ notesId }) => {
   const [imageThumbnails, setImageThumbnails] = useState([]);
   const [imageCount, setImageCount] = useState(0);
   const [showMenu, setShowMenu] = useState(false);
-
   const [imageCapture, setImageCapture] = useState(null);
 
   const initCamera = async () => {
@@ -21,43 +20,20 @@ const CaptureImages = ({ notesId, onBack }) => {
         throw new Error("getUserMedia is not supported by this browser.");
       }
 
-      //constraints for higher resolution in portrait mode
+      // set constraints for a 4:3 aspect ratio
       const constraints = {
         video: {
-          facingMode: 'environment', // use rear camera for better quality
-          width: { ideal: 1080 },    // adjust based on device capabilities
-          height: { ideal: 1920 },
-          aspectRatio: { ideal: 9 / 16 }, // ensure portrait mode aspect ratio
+          facingMode: 'environment',
+          aspectRatio: { ideal: 4 / 3 },
         }
       };
 
       const stream = await navigator.mediaDevices.getUserMedia(constraints);
       video.srcObject = stream;
 
-      // create ImageCapture object for high-resolution photos
       const track = stream.getVideoTracks()[0];
-      const capabilities = track.getCapabilities();
-
-      // adjust focus if supported
-      if (capabilities.focusMode && capabilities.focusMode.includes('continuous')) {
-        await track.applyConstraints({
-          advanced: [{ focusMode: 'continuous' }]
-        });
-      } else if (capabilities.focusMode && capabilities.focusMode.includes('manual')) {
-        await track.applyConstraints({
-          advanced: [{
-            focusMode: 'manual',
-            focusDistance: capabilities.focusDistance.min
-          }]
-        });
-      } else {
-        console.warn('Manual focus is not supported on this device.');
-      }
-
-      // store ImageCapture object in state
       const imageCaptureObj = new ImageCapture(track);
       setImageCapture(imageCaptureObj);
-
     } catch (error) {
       console.error('Camera initialization error:', error);
     }
@@ -74,7 +50,6 @@ const CaptureImages = ({ notesId, onBack }) => {
   const captureImage = async () => {
     if (imageCapture) {
       try {
-        // capture high-resolution photo using ImageCapture API
         const blob = await imageCapture.takePhoto();
 
         // upload blob to server
@@ -90,12 +65,19 @@ const CaptureImages = ({ notesId, onBack }) => {
       }
     } else {
       console.warn('ImageCapture is not available. Falling back to canvas capture.');
-      // fallback: Capture image from video element using canvas
+      
+      // fallback to canvas capture
       const video = document.getElementById('video');
       const canvas = document.createElement('canvas');
+
+      // match the canvas size to video dimensions to ensure the same aspect ratio
+      const videoAspectRatio = video.videoWidth / video.videoHeight;
+      const width = video.videoWidth;
+      const height = video.videoHeight;
+      canvas.width = width;
+      canvas.height = height;
+
       const context = canvas.getContext('2d');
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
       context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
       canvas.toBlob(async (blob) => {
@@ -119,7 +101,7 @@ const CaptureImages = ({ notesId, onBack }) => {
       <div id="camera-container">
         <video id="video" autoPlay playsInline style={{ transform: 'scaleX(-1)' }}></video>
       </div>
-      <Button id="snap" onClick={captureImage} startIcon={<img src={cameraIcon} alt="Camera icon" className="camera-icon"/>}>
+      <Button id="snap" onClick={captureImage} startIcon={<img src={cameraIcon} alt="Camera icon" className="camera-icon" />}>
       </Button>
       <div id='snapshots'></div>
       <div className="thumbnail-container">
@@ -137,7 +119,7 @@ const CaptureImages = ({ notesId, onBack }) => {
         src={nounMenuIcon}
         alt="Menu Icon"
         className="menu-icon2"
-        onClick={() => setShowMenu(true)} 
+        onClick={() => setShowMenu(true)}
       />
       {showMenu && <Menu onClose={() => setShowMenu(false)} />}
     </Box>
