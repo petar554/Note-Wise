@@ -38,3 +38,13 @@ export const addImageToNote = async (noteId, image, token) => {
   });
   return response.data;
 };
+
+export const getImageById = async (imageId, token) => {
+  const response = await axios.get(`${API_URL}/images/${imageId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    responseType: 'blob',
+  });
+  return response.data;
+};

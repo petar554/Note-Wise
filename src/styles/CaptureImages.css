@@ -80,6 +80,14 @@
     z-index: 10;
 }
 
+.dialogContent {
+    margin: -10px;
+}
+
+.dialogAction {
+    margin-top: -20px;
+}
+
 @media (max-width: 600px) {
     #snap {
         width: 60px;
