@@ -22,7 +22,7 @@ const CaptureImages = ({ notesId, onBack }) => {
       const constraints = {
         video: {
           facingMode: 'environment',
-          aspectRatio: { ideal: 4 / 3 },
+          aspectRatio: { ideal: 5 / 3 },
         }
       };
 
@@ -35,8 +35,8 @@ const CaptureImages = ({ notesId, onBack }) => {
       const imageCaptureObj = new ImageCapture(track);
       setImageCapture(imageCaptureObj);
 
-      // testing #todo: delete
-      // log dimensions of the live feed element once metadata is loaded
+      // #todo: delete
+      // testing: log dimensions of the live feed element once metadata is loaded
       video.onloadedmetadata = () => {
         console.log("Live Feed HTML Element Dimensions:", {
           width: video.offsetWidth,

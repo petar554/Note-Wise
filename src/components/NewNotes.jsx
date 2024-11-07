@@ -22,7 +22,7 @@ const NewNotes = ({ localization, onNoteCreation, onStartCapture }) => {
   };
 
   return (
-    <Box className="dark-mode-container main-screen" p={2}>
+    <Box className="dark-mode-container main-screen" mt={15}>
      <Typography variant="h4" component="h1" fontWeight="bold" className="new-note-headline">
         {localization?.new_note_headline?.split(' ').slice(0, 2).join(' ') || "Let's create"}
       </Typography>
